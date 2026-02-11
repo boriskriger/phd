@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhD Poster — Unified Structural Theory of Complex Systems</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --bg-deep: #0B0E17;
+    --bg-panel: #111827;
+    --bg-card: #1A2235;
+    --accent-gold: #D4A853;
+    --accent-copper: #C77B4A;
+    --accent-teal: #4FB8A8;
+    --accent-blue: #5B8DEF;
+    --accent-violet: #9B7FD4;
+    --accent-rose: #D46B8A;
+    --text-primary: #E8E4DD;
+    --text-secondary: #9BA3B5;
+    --text-muted: #6B7280;
+    --border: rgba(212, 168, 83, 0.15);
+    --glow: rgba(212, 168, 83, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .poster {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+  }
+
+  /* === HEADER === */
+  .header {
+    background: linear-gradient(135deg, #0D1220 0%, #162035 40%, #1A1A30 100%);
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 48px 56px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: 100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(79,184,168,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .institution {
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+  }
+
+  .title-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    max-width: 900px;
+  }
+
+  .title-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 24px;
+    color: var(--accent-gold);
+    margin-bottom: 24px;
+    max-width: 850px;
+  }
+
+  .author-line {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-secondary);
+  }
+  .author-line strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* === MAIN GRID === */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    background: var(--bg-deep);
+  }
+
+  .column {
+    padding: 28px 24px;
+    border-right: 1px solid var(--border);
+  }
+  .column:last-child { border-right: none; }
+
+  /* === CARDS === */
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 22px 20px;
+    margin-bottom: 16px;
+    position: relative;
+    transition: border-color 0.3s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+  }
+
+  .card.meta::before { background: var(--accent-gold); }
+  .card.dynamics::before { background: var(--accent-teal); }
+  .card.cognition::before { background: var(--accent-blue); }
+  .card.social::before { background: var(--accent-violet); }
+  .card.applications::before { background: var(--accent-copper); }
+  .card.synthesis::before { background: var(--accent-rose); }
+
+  .card-icon {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card.meta .card-icon { color: var(--accent-gold); }
+  .card.dynamics .card-icon { color: var(--accent-teal); }
+  .card.cognition .card-icon { color: var(--accent-blue); }
+  .card.social .card-icon { color: var(--accent-violet); }
+  .card.applications .card-icon { color: var(--accent-copper); }
+  .card.synthesis .card-icon { color: var(--accent-rose); }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+
+  .card-body {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+  }
+
+  .card-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* === CENTRAL DIAGRAM === */
+  .central-diagram {
+    background: linear-gradient(180deg, var(--bg-card) 0%, rgba(26,34,53,0.6) 100%);
+    border: 1px solid var(--accent-gold);
+    border-radius: 8px;
+    padding: 24px 20px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .diagram-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--accent-gold);
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .diagram-svg {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  /* === LAWS BOX === */
+  .laws-box {
+    background: rgba(212,168,83,0.04);
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 6px;
+    padding: 18px 16px;
+    margin-bottom: 16px;
+  }
+
+  .law-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .law-item:last-child { margin-bottom: 0; }
+
+  .law-num {
+    flex-shrink: 0;
+    width: 22px; height: 22px;
+    background: var(--accent-gold);
+    color: var(--bg-deep);
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+
+  .law-name {
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  /* === TABLE === */
+  .corr-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin-top: 8px;
+  }
+
+  .corr-table th {
+    background: rgba(212,168,83,0.12);
+    color: var(--accent-gold);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    font-size: 10.5px;
+    padding: 8px 6px;
+    text-align: left;
+    border-bottom: 1px solid var(--accent-gold);
+  }
+
+  .corr-table td {
+    padding: 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+
+  .corr-table tr:hover td {
+    background: rgba(212,168,83,0.03);
+  }
+
+  .corr-table td:first-child {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 11.5px;
+  }
+
+  /* === THESIS STATEMENT === */
+  .thesis-band {
+    background: linear-gradient(135deg, #1A1520 0%, #201828 50%, #181525 100%);
+    border-top: 2px solid var(--accent-gold);
+    border-bottom: 2px solid var(--accent-gold);
+    padding: 36px 56px;
+    text-align: center;
+  }
+
+  .thesis-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 14px;
+  }
+
+  .thesis-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--text-primary);
+    max-width: 950px;
+    margin: 0 auto;
+  }
+
+  .thesis-text em {
+    color: var(--accent-gold);
+    font-style: normal;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: var(--bg-panel);
+    padding: 24px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-section {
+    flex: 1;
+  }
+
+  .footer-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+  }
+
+  .footer-text {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  .keyword-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .keyword-tag {
+    background: rgba(212,168,83,0.08);
+    border: 1px solid rgba(212,168,83,0.15);
+    color: var(--text-secondary);
+    font-size: 10.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+
+  /* === EQUATION === */
+  .equation-box {
+    background: rgba(79,184,168,0.05);
+    border: 1px solid rgba(79,184,168,0.2);
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  .equation {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--accent-teal);
+    letter-spacing: 0.5px;
+  }
+
+  .equation-caption {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* === PRINT === */
+  @media print {
+    body { background: white; color: #111; }
+    .poster { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- ==================== HEADER ==================== -->
+  <div class="header">
+    <div class="institution">PhD Dissertation &nbsp;·&nbsp; Systems Science &nbsp;·&nbsp; 2026</div>
+    <div class="title-main">Unified Structural Theory of Complex Systems</div>
+    <div class="title-sub">Formal Laws, Epistemic Constraints, and Persistence as Organizing Principles Across Physical, Cognitive, and Social Domains</div>
+    <div class="author-line"><strong>Boris Kriger</strong> &nbsp;&middot;&nbsp; 75 publications (1999–2026) &nbsp;&middot;&nbsp; Zenodo repository</div>
+  </div>
+
+  <!-- ==================== MAIN GRID ==================== -->
+  <div class="main-grid">
+
+    <!-- ===== COLUMN 1 ===== -->
+    <div class="column">
+
+      <div class="card meta">
+        <div class="card-icon">◆ Part I</div>
+        <div class="card-title">Meta-Theoretical Foundations</div>
+        <div class="card-body">
+          Any investigation of a complex system operates within a formal framework that is <strong>necessarily incomplete</strong>, <strong>definition-dependent</strong>, and <strong>uncertainty-laden</strong>. Five foundational results establish the epistemic architecture:
+        </div>
+      </div>
+
+      <div class="laws-box">
+        <div class="law-item">
+          <span class="law-num">1</span>
+          <span><span class="law-name">Law of Scale-Specific Principles</span> — No final theory can encompass all scales. Unification is possible only for genuinely scale-invariant structural constraints.</span>
+        </div>
+        <div class="law-item">
+          <span class="law-num">2</span>
+          <span><span class="law-name">Formalization Laws</span> — No single formalization captures all operationally relevant properties. Multiple representations are structural necessity.</span>
+        </div>
+        <div class="law-item">
+          <span class="law-num">3</span>
+          <span><span class="law-name">Definition-Dependent Provability</span> — Provability is a function of definitions adopted. Changing definitions changes the space of provable statements.</span>
+        </div>
+        <div class="law-item">
+          <span class="law-num">4</span>
+          <span><span class="law-name">Law of Imperative Uncertainty</span> — Any world containing autonomous agents necessarily contains irreducible uncertainty.</span>
+        </div>
+        <div class="law-item">
+          <span class="law-num">5</span>
+          <span><span class="law-name">Law of Limit to Negation</span> — Negation cannot negate itself without paradox. Destructive criticism taken to completion undermines its own foundation.</span>
+        </div>
+      </div>
+
+      <div class="card dynamics">
+        <div class="card-icon">◆ Part II</div>
+        <div class="card-title">The Dynamical Core: Persistence and Viability</div>
+        <div class="card-body">
+          The <strong>Transformational Basis of Persistence</strong> proves that any system persisting in a changing environment must satisfy three conditions — the <strong>Persistence Triad</strong>:
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">Persistence = Closure ∩ Boundary Maintenance ∩ Resilience</div>
+        <div class="equation-caption">The viability set V must be invariant, bounded, and recoverable</div>
+      </div>
+
+      <div class="card dynamics">
+        <div class="card-icon">Four Laws of Self-Organization</div>
+        <div class="card-title">Universal Laws (Proven Independent and Complete)</div>
+        <div class="card-body">
+          <strong>Cooperation:</strong> Synergy is required — subsystems must produce joint states unavailable to each alone.<br>
+          <strong>Viability:</strong> Non-empty viability set must be maintained at all times.<br>
+          <strong>Interference:</strong> In multi-component systems, conflict is structurally inevitable.<br>
+          <strong>Observability:</strong> Self-maintenance requires at least partial mutual observability.
+        </div>
+      </div>
+
+      <div class="card dynamics">
+        <div class="card-icon">Additional Laws</div>
+        <div class="card-title">Constraint–Autonomy &amp; Viability Mismatch</div>
+        <div class="card-body">
+          Constraints and autonomy are <strong>co-constitutive</strong> — maximizing either at the expense of the other causes collapse. <strong>Stress</strong> in any system is formalized as viability mismatch: demands exceeding the current viability set. Response is determined by resilience structure.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== COLUMN 2 ===== -->
+    <div class="column">
+
+      <div class="central-diagram">
+        <div class="diagram-title">Architecture of the Unified Theory</div>
+        <svg class="diagram-svg" viewBox="0 0 340 420" xmlns="http://www.w3.org/2000/svg">
+          <!-- Foundation -->
+          <rect x="20" y="350" width="300" height="52" rx="6" fill="rgba(212,168,83,0.12)" stroke="#D4A853" stroke-width="1.5"/>
+          <text x="170" y="372" text-anchor="middle" fill="#D4A853" font-family="Source Sans 3" font-size="11" font-weight="700" letter-spacing="1">META-THEORY</text>
+          <text x="170" y="390" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="10">Formalization Laws · Epistemic Constraints · Undecidability</text>
+
+          <!-- Dynamical Core -->
+          <rect x="40" y="275" width="260" height="52" rx="6" fill="rgba(79,184,168,0.12)" stroke="#4FB8A8" stroke-width="1.5"/>
+          <text x="170" y="297" text-anchor="middle" fill="#4FB8A8" font-family="Source Sans 3" font-size="11" font-weight="700" letter-spacing="1">DYNAMICAL CORE</text>
+          <text x="170" y="315" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="10">Persistence · Viability · Self-Organization · Closure</text>
+
+          <!-- Connecting lines -->
+          <line x1="170" y1="350" x2="170" y2="327" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Left: Cognition -->
+          <rect x="15" y="185" width="145" height="68" rx="6" fill="rgba(91,141,239,0.12)" stroke="#5B8DEF" stroke-width="1.5"/>
+          <text x="88" y="210" text-anchor="middle" fill="#5B8DEF" font-family="Source Sans 3" font-size="10" font-weight="700" letter-spacing="0.8">COGNITION</text>
+          <text x="88" y="224" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Predictive Processing</text>
+          <text x="88" y="237" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Distortion · Memory</text>
+          <text x="88" y="250" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Consciousness</text>
+
+          <!-- Right: Social -->
+          <rect x="180" y="185" width="145" height="68" rx="6" fill="rgba(155,127,212,0.12)" stroke="#9B7FD4" stroke-width="1.5"/>
+          <text x="253" y="210" text-anchor="middle" fill="#9B7FD4" font-family="Source Sans 3" font-size="10" font-weight="700" letter-spacing="0.8">SOCIAL</text>
+          <text x="253" y="224" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Deception · Conflict</text>
+          <text x="253" y="237" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Extractive Oscillators</text>
+          <text x="253" y="250" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Institutions · Ethics</text>
+
+          <!-- Lines to core -->
+          <line x1="88" y1="253" x2="130" y2="275" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="253" y1="253" x2="210" y2="275" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Applications -->
+          <rect x="60" y="105" width="220" height="55" rx="6" fill="rgba(199,123,74,0.12)" stroke="#C77B4A" stroke-width="1.5"/>
+          <text x="170" y="127" text-anchor="middle" fill="#C77B4A" font-family="Source Sans 3" font-size="10" font-weight="700" letter-spacing="0.8">APPLICATIONS</text>
+          <text x="170" y="141" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Astrophysics · AI · Civilization · Healthcare</text>
+          <text x="170" y="154" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Entropy · Fermi Paradox · Epidemiology</text>
+
+          <line x1="120" y1="185" x2="145" y2="160" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="220" y1="185" x2="195" y2="160" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Synthesis crown -->
+          <rect x="80" y="30" width="180" height="50" rx="6" fill="rgba(212,107,138,0.12)" stroke="#D46B8A" stroke-width="1.5"/>
+          <text x="170" y="52" text-anchor="middle" fill="#D46B8A" font-family="Source Sans 3" font-size="10" font-weight="700" letter-spacing="0.8">SYNTHESIS</text>
+          <text x="170" y="66" text-anchor="middle" fill="#9BA3B5" font-family="Source Sans 3" font-size="9">Differentiation · Optimal Coherence</text>
+          <text x="170" y="76" text-anchor="middle" fill="#E8E4DD" font-family="Cormorant Garamond" font-size="10" font-style="italic">Persistence as Primary Principle</text>
+
+          <line x1="170" y1="80" x2="170" y2="105" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Arrow up -->
+          <text x="170" y="17" text-anchor="middle" fill="#D4A853" font-size="16">▲</text>
+          <text x="170" y="10" text-anchor="middle" fill="#D4A853" font-family="Source Sans 3" font-size="8" letter-spacing="2" font-weight="600"></text>
+        </svg>
+      </div>
+
+      <div class="card cognition">
+        <div class="card-icon">◆ Part III</div>
+        <div class="card-title">Cognition as Structural Necessity</div>
+        <div class="card-body">
+          <strong>Structural Distortion Principle:</strong> Bounded systems must distort representations — cognitive biases are optimal solutions, not failures.<br><br>
+          <strong>Predictive Processing</strong> is derived (not hypothesized) from energy, memory, and latency constraints as the <em>only</em> viable architecture.<br><br>
+          <strong>Representational Isolation:</strong> Direct perception is proven formally impossible for complex systems.<br><br>
+          <strong>Atemporal Memory:</strong> Time is reconstructed at retrieval, not encoded at storage — following from cyclical closure requirements.<br><br>
+          <strong>Mental Disintegration:</strong> DSM-5-TR categories mapped onto dynamical pathologies: attractor loss (psychosis), bifurcation cascades (mood cycling), attractor trapping (compulsion).
+        </div>
+      </div>
+
+      <div class="card social">
+        <div class="card-icon">◆ Part IV</div>
+        <div class="card-title">Social Systems from Structural Laws</div>
+        <div class="card-body">
+          <strong>Extractive Oscillators:</strong> A single formal model captures narcissistic dynamics, chemical addiction, and algorithmic dependence — substrate-independent.<br><br>
+          <strong>Conflict as Phase Transition:</strong> Escalation exhibits critical slowing down, correlation divergence, and symmetry breaking.<br><br>
+          <strong>Asymmetry of Totalizing Ideals:</strong> Any ideal demanding total implementation destabilizes the pursuing system — sustainable systems operate in the interior of viability sets.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ===== COLUMN 3 ===== -->
+    <div class="column">
+
+      <div class="card applications">
+        <div class="card-icon">◆ Part V</div>
+        <div class="card-title">Cross-Domain Applications</div>
+        <div class="card-body">
+          <strong>Astrophysics:</strong> Binary star systems as persistence-selected outcomes; dormant neutron star population constraints; "Can a star be proven single?" as epistemic constraint case study.<br><br>
+          <strong>Information &amp; Entropy:</strong> Biospheric contribution to cosmic complexity; local entropy inversion in AI systems; Ledger Time Model connecting atemporality to physics.<br><br>
+          <strong>AI &amp; Civilization:</strong> The Inward Turn (Fermi Paradox); AI-extended communication norm shifts; Stimulus Problem in post-scarcity environments; inevitability of substrate-independent civilizations.
+        </div>
+      </div>
+
+      <div class="card synthesis">
+        <div class="card-icon">◆ Part VI</div>
+        <div class="card-title">Cross-Domain Structural Correspondences</div>
+        <div class="card-body">
+          <table class="corr-table">
+            <thead>
+              <tr><th>Principle</th><th>Bio</th><th>Cognitive</th><th>Social</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Closure</td><td>Homeostasis</td><td>Attractors</td><td>Norms</td></tr>
+              <tr><td>Boundary</td><td>Membrane</td><td>Rep. isolation</td><td>Gatekeeping</td></tr>
+              <tr><td>Resilience</td><td>Immune sys.</td><td>Error corr.</td><td>Crisis mgmt</td></tr>
+              <tr><td>Cycl. Closure</td><td>Metabolism</td><td>Pred. loop</td><td>Recycling</td></tr>
+              <tr><td>Viab. Mismatch</td><td>Disease</td><td>Disintegr.</td><td>Collapse</td></tr>
+              <tr><td>Extr. Oscill.</td><td>Parasitism</td><td>Addiction</td><td>Exploitation</td></tr>
+              <tr><td>Pre-Int. Reject.</td><td>Antigen scr.</td><td>Belief filter</td><td>Vetting</td></tr>
+              <tr><td>Distortion</td><td>Sens. adapt.</td><td>Cog. bias</td><td>Propaganda</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card synthesis">
+        <div class="card-icon">Epistemological Patterns</div>
+        <div class="card-title">Four Cognitive Strategies of Structural Inquiry</div>
+        <div class="card-body">
+          <strong>1. Substrate Abstraction</strong> — Prove (not assert) that cross-domain commonalities are mathematical, not metaphorical.<br><br>
+          <strong>2. Constraint Derivation</strong> — Derive system features from constraints any system of the class must satisfy.<br><br>
+          <strong>3. Recursive Self-Application</strong> — The theory applies to itself: its own partiality, distortions, and boundaries are predicted by its own laws.<br><br>
+          <strong>4. Boundary Recognition</strong> — Every result is accompanied by explicit scope limitations, as the formalization laws require.
+        </div>
+      </div>
+
+      <div class="card synthesis">
+        <div class="card-icon">Deepest Result</div>
+        <div class="card-title">Differentiation → Coherence → Actualization</div>
+        <div class="card-body">
+          <strong>Differentiation</strong> is the ontological condition of actualization: no distinctions → no structure → no existence. <strong>Optimal Coherence</strong> is the complementary principle: maximal actualization when all differentiations support each other. This is the ur-concept from which all others derive.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== THESIS BAND ==================== -->
+  <div class="thesis-band">
+    <div class="thesis-label">Central Thesis</div>
+    <div class="thesis-text">
+      <em>Persistence, not truth,</em> is the primary organizing principle of complex systems.<br>
+      Truth-seeking, consciousness, social organization, and scientific inquiry are <em>derivative phenomena</em> —<br>
+      strategies that systems have evolved to maintain structural viability.
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <div class="footer">
+    <div class="footer-section">
+      <div class="footer-label">Publications</div>
+      <div class="footer-text">75 original publications (1999–2026)<br>Zenodo open-access repository<br>Spanning 7 domains over 27 years</div>
+    </div>
+    <div class="footer-section">
+      <div class="footer-label">Keywords</div>
+      <div class="keyword-tags">
+        <span class="keyword-tag">Complex Systems</span>
+        <span class="keyword-tag">Structural Viability</span>
+        <span class="keyword-tag">Epistemic Constraints</span>
+        <span class="keyword-tag">Persistence</span>
+        <span class="keyword-tag">Self-Organization</span>
+        <span class="keyword-tag">Predictive Processing</span>
+        <span class="keyword-tag">Multi-Agent Systems</span>
+        <span class="keyword-tag">Dynamical Systems</span>
+        <span class="keyword-tag">Philosophy of Science</span>
+      </div>
+    </div>
+    <div class="footer-section">
+      <div class="footer-label">Methodology</div>
+      <div class="footer-text">PhD by Publication<br>Constraint derivation over model postulation<br>Formal proof of structural isomorphism<br>Recursive self-application</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
