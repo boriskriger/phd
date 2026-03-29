@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RP³ Cosmology — Interactive Visualizations</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#060618;color:#c8c3f0;font-family:system-ui,sans-serif;line-height:1.7}
+.container{max-width:720px;margin:0 auto;padding:2rem 1.5rem}
+h1{font-size:1.6rem;font-weight:500;margin-bottom:0.5rem;color:#e0ddff}
+h2{font-size:1.2rem;font-weight:500;margin:2.5rem 0 0.8rem;color:#d0ccff;border-bottom:1px solid rgba(160,150,230,0.15);padding-bottom:0.4rem}
+h3{font-size:1rem;font-weight:500;margin:1.5rem 0 0.5rem;color:#b8b3e8}
+p{margin-bottom:1rem;font-size:0.95rem;color:rgba(200,195,240,0.8)}
+.subtitle{font-size:0.9rem;color:rgba(200,195,240,0.5);margin-bottom:2rem}
+canvas{display:block;margin:1rem auto;border-radius:12px;cursor:grab;max-width:100%}
+.controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:0.8rem 0 1.5rem;align-items:center}
+.controls label{font-size:13px;color:rgba(200,195,240,0.6);display:flex;align-items:center;gap:6px}
+.controls input[type="range"]{width:90px}
+.controls button{font-size:13px;padding:4px 14px;background:transparent;border:1px solid rgba(160,150,230,0.3);color:#b8b3e8;border-radius:6px;cursor:pointer}
+.controls button:hover{background:rgba(160,150,230,0.1)}
+.eq{text-align:center;font-family:'Courier New',monospace;font-size:0.95rem;color:#AFA9EC;margin:1rem 0;padding:0.8rem;background:rgba(80,70,140,0.1);border-radius:8px}
+.note{font-size:0.85rem;color:rgba(200,195,240,0.45);font-style:italic;margin:0.5rem 0 1.5rem}
+hr{border:none;border-top:1px solid rgba(160,150,230,0.1);margin:2rem 0}
+a{color:#AFA9EC}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Dynamic Topology of the Universe</h1>
+<p class="subtitle">RP³ with Double Counter-Rotation — Interactive Companion<br>Boris Kriger | Information Physics Institute</p>
+
+<h2>1. The Ball Model of RP³</h2>
+<p>RP³ can be visualized as a solid 3-ball with antipodal boundary points identified: p ~ −p. Interior points are distinct. Every straight line through the center is a closed geodesic — a projective line topologically equivalent to a circle.</p>
+
+<canvas id="c1" width="600" height="600" style="width:100%;aspect-ratio:1"></canvas>
+<div class="controls">
+  <label>Speed <input type="range" min="0" max="100" value="35" id="sp1" step="1"></label>
+  <label><input type="checkbox" id="id1"> Identification</label>
+  <label><input type="checkbox" id="geo1" checked> Geodesics</label>
+</div>
+
+<p class="note">Drag to rotate. The white dot is a traveler: it departs from pole P, passes through center O, reaches the antipodal point P', and — because P' ~ P — returns to P. Every diameter is a closed loop.</p>
+
+<h2>2. The 4D Projective Sphere with Hopf Fibration</h2>
+<p>S³ lives in ℝ⁴. Stereographic projection maps it to ℝ³, then perspective projection maps to the screen. The colored curves are Hopf fibers — circles S¹ that fill S³ without intersection. The XW, YW, ZW sliders control rotation through the fourth dimension.</p>
+
+<canvas id="c2" width="600" height="600" style="width:100%;aspect-ratio:1"></canvas>
+<div class="controls">
+  <label>XW <input type="range" min="0" max="100" value="25" id="rXW2" step="1"></label>
+  <label>YW <input type="range" min="0" max="100" value="15" id="rYW2" step="1"></label>
+  <label>ZW <input type="range" min="0" max="100" value="10" id="rZW2" step="1"></label>
+  <label><input type="checkbox" id="hopf2" checked> Hopf fibers</label>
+  <label><input type="checkbox" id="anti2"> Antipodes</label>
+</div>
+
+<h2>3. Double Rotation in 4D</h2>
+<p>In 3D, rotation fixes an axis. In 4D, rotation occurs in a plane, and there are 6 rotation planes. A general rotation decomposes into at most 2 simultaneous independent rotations in orthogonal planes. Three modes:</p>
+
+<canvas id="c3" width="700" height="450" style="width:100%;aspect-ratio:14/9"></canvas>
+<div class="controls">
+  <button id="bS3">Simple</button>
+  <button id="bD3">Double</button>
+  <button id="bI3">Isoclinic</button>
+  <label>Plane 1 <input type="range" min="0" max="100" value="40" id="s13" step="1"></label>
+  <label>Plane 2 <input type="range" min="0" max="100" value="0" id="s23" step="1"></label>
+</div>
+
+<p class="note"><strong>Simple</strong>: one plane rotates, one is fixed (3D analog). <strong>Double</strong>: both rotate at different speeds (θ₁ ≠ θ₂). <strong>Isoclinic</strong>: both rotate at equal speeds (θ₁ = θ₂) — every point traces an identical orbit. This is the Clifford rotation generating the Hopf fibration.</p>
+
+<h2>4. QGVP Initial State and Expansion</h2>
+<p>The initial state: RP³ at nuclear density (~2.3 × 10¹⁷ kg/m³), radius ~15 AU, filled with Quark-Gluon-Vacuum Plasma. Time is frozen (v_rot = c, v_time = 0). The Kriger Limit prevents singularity: above nuclear density, the chiral condensate is destroyed and α → 0.</p>
+
+<div class="eq">v²_rot + v²_time = c² &nbsp;&nbsp;|&nbsp;&nbsp; Initial: v_rot = c, v_time = 0</div>
+
+<canvas id="c4" width="640" height="640" style="width:100%;aspect-ratio:1"></canvas>
+<div class="controls">
+  <label>Epoch <input type="range" min="1" max="1000" value="1" id="ep4" step="1"> <span id="epV4">0.00</span></label>
+  <button id="play4">Play</button>
+  <button id="reset4">Reset</button>
+  <label><input type="checkbox" id="poles4" checked> Poles</label>
+  <label><input type="checkbox" id="hopf4"> Hopf</label>
+</div>
+
+<p class="note">At epoch 0: QGVP state, 4 RP³ poles visible, nuclear density, time rate ~7%. Press Play to watch expansion: density drops, temperature falls, α decreases, time accelerates.</p>
+
+<h2>5. Summary of the Construction</h2>
+
+<h3>One topology → six solutions</h3>
+<p>RP³ = S³/ℤ₂ with two counter-rotations at v = c in orthogonal planes, L₁ = −L₂, L_total = 0.</p>
+
+<div class="eq">
+SO(4) ≅ (SU(2) × SU(2)) / ℤ₂ → two independent conserved momenta
+</div>
+
+<p><strong>Cosmological constant:</strong> Λ₀ from QCD sigma terms, factor 1.65, zero parameters.<br>
+<strong>Dark energy:</strong> Centrifugal expansion + vacuum gravitation via α.<br>
+<strong>Dark matter:</strong> Vacuum captured in bound structures.<br>
+<strong>Singularity:</strong> Five barriers — Kriger Limit, membrane elasticity, double rotation, centrifugal force, time absence.<br>
+<strong>Baryon asymmetry:</strong> η = α⁴ = 6.2 × 10⁻¹⁰. CPT from antipodal identification.<br>
+<strong>Inflation:</strong> Centrifugal force at v = c. Exit via angular momentum conservation.</p>
+
+<div class="eq">
+Banach fixed-point theorem: ∃! x* = Φ(x*) → all constants are properties of x*
+</div>
+
+<hr>
+<p style="text-align:center;font-size:0.8rem;color:rgba(200,195,240,0.3);margin-top:2rem">
+Boris Kriger | Information Physics Institute | Institute of Integrative and Interdisciplinary Research, Toronto<br>
+<a href="https://www.researchgate.net/profile/Boris-Kriger">ResearchGate</a> |
+ORCID: 0009-0001-0034-2903
+</p>
+
+</div>
+
+<script>
+// === SHARED UTILITIES ===
+function setupCanvas(id){const cv=document.getElementById(id);const ctx=cv.getContext('2d');const r=cv.getBoundingClientRect();const d=window.devicePixelRatio||1;cv.width=r.width*d;cv.height=r.height*d;return{cv,ctx,W:cv.width,H:cv.height,cx:cv.width/2,cy:cv.height/2};}
+
+function addDrag(cv,state){
+cv.addEventListener('mousedown',e=>{state.drag=true;state.lx=e.clientX;state.ly=e.clientY;cv.style.cursor='grabbing';});
+window.addEventListener('mousemove',e=>{if(!state.drag)return;const dx=e.clientX-state.lx,dy=e.clientY-state.ly;state.ax+=dx*0.005;state.ay+=dy*0.005;state.vx=dx;state.vy=dy;state.lx=e.clientX;state.ly=e.clientY;});
+window.addEventListener('mouseup',()=>{state.drag=false;cv.style.cursor='grab';});
+cv.addEventListener('touchstart',e=>{state.drag=true;state.lx=e.touches[0].clientX;state.ly=e.touches[0].clientY;e.preventDefault();},{passive:false});
+cv.addEventListener('touchmove',e=>{if(!state.drag)return;const dx=e.touches[0].clientX-state.lx,dy=e.touches[0].clientY-state.ly;state.ax+=dx*0.005;state.ay+=dy*0.005;state.vx=dx;state.vy=dy;state.lx=e.touches[0].clientX;state.ly=e.touches[0].clientY;e.preventDefault();},{passive:false});
+cv.addEventListener('touchend',()=>{state.drag=false;});}
+
+// === VIS 1: BALL MODEL ===
+(function(){
+const{cv,ctx,W,H,cx,cy}=setupCanvas('c1');
+const R=Math.min(W,H)*0.38;
+const st={drag:false,lx:0,ly:0,ax:0.4,ay:0,vx:0,vy:0};
+addDrag(cv,st);
+const geos=[{dir:[0,-1,0],color:'#AFA9EC'},{dir:[0.7,-0.7,0.1],color:'#F0997B'},{dir:[-0.5,-0.5,0.7],color:'#5DCAA5'},{dir:[0.3,-0.3,-0.9],color:'#ED93B1'}];
+geos.forEach(g=>{const l=Math.sqrt(g.dir[0]**2+g.dir[1]**2+g.dir[2]**2);g.dir=g.dir.map(v=>v/l);});
+let time=0,tT=0;
+function rot3Y(p,a){const c=Math.cos(a),s=Math.sin(a);return[p[0]*c+p[2]*s,p[1],-p[0]*s+p[2]*c];}
+function proj(p3){const r=rot3Y(p3,st.ax);const f=4/(4+r[2]);return{x:cx+r[0]*R*f,y:cy+r[1]*R*f,z:r[2],d:f};}
+function draw(){
+const sp=document.getElementById('sp1').value/3000;
+time+=0.016;tT+=sp*1.5;
+if(!st.drag){st.ax+=st.vx*0.01;st.vx*=0.96;st.vy*=0.96;}
+ctx.clearRect(0,0,W,H);ctx.fillStyle='#0e0e24';ctx.fillRect(0,0,W,H);
+ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle='rgba(60,55,120,0.08)';ctx.fill();
+ctx.strokeStyle='rgba(130,125,200,0.25)';ctx.lineWidth=1.5;ctx.stroke();
+const cPr=proj([0,0,0]);ctx.beginPath();ctx.arc(cPr.x,cPr.y,4,0,Math.PI*2);ctx.fillStyle='rgba(220,215,255,0.5)';ctx.fill();
+const showGeo=document.getElementById('geo1').checked;
+const showId=document.getElementById('id1').checked;
+for(let gi=0;gi<(showGeo?geos.length:1);gi++){
+const g=geos[gi];const steps=80;
+for(let i=0;i<steps;i++){const t1=(i/steps)*2-1,t2=((i+1)/steps)*2-1;
+const a=proj(g.dir.map(v=>v*t1)),b=proj(g.dir.map(v=>v*t2));
+ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+ctx.strokeStyle=g.color;ctx.globalAlpha=0.15+0.5*((a.d+b.d)/2);ctx.lineWidth=2;ctx.stroke();ctx.globalAlpha=1;}
+const ep=proj(g.dir),sp2=proj(g.dir.map(v=>-v));
+[ep,sp2].forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,6*p.d,0,Math.PI*2);ctx.fillStyle=g.color;ctx.globalAlpha=0.9;ctx.fill();ctx.globalAlpha=1;});
+if(gi===0){const tN=((tT%2)+2)%2;let tV=tN<1?-1+tN*2:1-(tN-1)*2;
+const tP=proj(g.dir.map(v=>v*tV));ctx.beginPath();ctx.arc(tP.x,tP.y,8*tP.d,0,Math.PI*2);ctx.fillStyle='#fff';ctx.globalAlpha=0.9;ctx.fill();ctx.globalAlpha=1;
+ctx.beginPath();ctx.arc(tP.x,tP.y,5*tP.d,0,Math.PI*2);ctx.fillStyle=g.color;ctx.fill();}}
+const fs=Math.round(11*(W/600));ctx.font=`${fs}px sans-serif`;ctx.fillStyle='rgba(200,195,240,0.3)';ctx.textAlign='center';
+ctx.fillText('B\u00b3 \u2014 Ball model of RP\u00b3',cx,cy+R+20*(W/600));
+ctx.fillText('Boundary: p ~ \u2212p | Interior: all points distinct',cx,cy+R+36*(W/600));
+requestAnimationFrame(draw);}
+draw();
+})();
+
+// === VIS 2: 4D HOPF ===
+(function(){
+const{cv,ctx,W,H,cx,cy}=setupCanvas('c2');
+const R=Math.min(W,H)*0.4;
+const st={drag:false,lx:0,ly:0,ax:0.3,ay:0,vx:0,vy:0};
+addDrag(cv,st);
+let aXW=0,aYW=0,aZW=0,time=0;
+function rot4(p,pl,a){const c=Math.cos(a),s=Math.sin(a);let[x,y,z,w]=p;
+if(pl==='XW')return[x*c-w*s,y,z,x*s+w*c];if(pl==='YW')return[x,y*c-w*s,z,y*s+w*c];
+if(pl==='ZW')return[x,y,z*c-w*s,z*s+w*c];if(pl==='XY')return[x*c-y*s,x*s+y*c,z,w];
+if(pl==='YZ')return[x,y*c-z*s,y*s+z*c,w];return p;}
+function applyR(p){let q=rot4(p,'XW',aXW);q=rot4(q,'YW',aYW);q=rot4(q,'ZW',aZW);q=rot4(q,'XY',st.ax);q=rot4(q,'YZ',st.ay);return q;}
+function stereo(p4){const d=1-p4[3]+0.001;return[p4[0]/d,p4[1]/d,p4[2]/d];}
+function to2D(p3){const f=3.5/(3.5+p3[2]);return{x:cx+p3[0]*R*f,y:cy+p3[1]*R*f,z:p3[2],d:f};}
+const fColors=[{h:260,s:70,l:70},{h:170,s:65,l:65},{h:20,s:75,l:65},{h:330,s:60,l:65},{h:210,s:70,l:65},{h:50,s:70,l:65},{h:120,s:55,l:60},{h:290,s:55,l:65}];
+const fibers=[];
+for(let r=0;r<8;r++){const phi=(r/8)*Math.PI;for(let k=0;k<6;k++){const theta=(k/6)*Math.PI*2;
+const pts=[];const cb=Math.cos(phi/2),sb=Math.sin(phi/2),ct=Math.cos(theta),sn=Math.sin(theta);
+for(let i=0;i<=80;i++){const t=(i/80)*Math.PI*2;const cc=Math.cos(t),ss=Math.sin(t);pts.push([cb*cc,cb*ss,sb*(ct*cc+sn*ss),sb*(sn*cc-ct*ss)]);}
+fibers.push({pts,color:fColors[r%fColors.length]});}}
+const stars=[];for(let i=0;i<300;i++){const u=Math.random()*2-1,v=Math.random()*2-1,w2=Math.random()*2-1,w4=Math.random()*2-1;
+const l=Math.sqrt(u*u+v*v+w2*w2+w4*w4);stars.push({p:[u/l,v/l,w2/l,w4/l],sz:0.8+Math.random()*2,br:0.4+Math.random()*0.6,tw:Math.random()*6.28});}
+function draw(){
+time+=0.012;aXW+=document.getElementById('rXW2').value/4000;aYW+=document.getElementById('rYW2').value/4000;aZW+=document.getElementById('rZW2').value/4000;
+if(!st.drag){st.ax+=st.vx*0.008;st.ay+=st.vy*0.008;st.vx*=0.97;st.vy*=0.97;}
+ctx.clearRect(0,0,W,H);ctx.fillStyle='#0e0e24';ctx.fillRect(0,0,W,H);
+for(const s of stars){const rp=applyR(s.p);const p3=stereo(rp);if(Math.sqrt(p3[0]**2+p3[1]**2+p3[2]**2)>3)continue;
+const sc=to2D(p3);const tw=0.5+0.5*Math.sin(time*2.5+s.tw);
+ctx.beginPath();ctx.arc(sc.x,sc.y,s.sz*sc.d*(W/600),0,Math.PI*2);
+ctx.fillStyle=`rgba(220,225,255,${(s.br*tw*sc.d*0.5).toFixed(2)})`;ctx.fill();
+if(document.getElementById('anti2').checked){const ap=applyR(s.p.map(v=>-v));const ap3=stereo(ap);
+if(Math.sqrt(ap3[0]**2+ap3[1]**2+ap3[2]**2)<=3){const asc=to2D(ap3);ctx.beginPath();ctx.arc(asc.x,asc.y,s.sz*0.6*asc.d*(W/600),0,Math.PI*2);
+ctx.fillStyle=`rgba(216,90,48,${(s.br*tw*0.3*asc.d).toFixed(2)})`;ctx.fill();}}}
+if(document.getElementById('hopf2').checked){for(const f of fibers){ctx.beginPath();let started=false;
+for(const pt of f.pts){const rp=applyR(pt);const p3=stereo(rp);if(Math.sqrt(p3[0]**2+p3[1]**2+p3[2]**2)>4)continue;
+const sc=to2D(p3);if(!started){ctx.moveTo(sc.x,sc.y);started=true;}else ctx.lineTo(sc.x,sc.y);}
+const{h,s,l}=f.color;ctx.strokeStyle=`hsla(${h},${s}%,${l}%,0.25)`;ctx.lineWidth=1.2;ctx.stroke();}}
+const fs=Math.round(11*(W/600));ctx.font=`${fs}px sans-serif`;ctx.fillStyle='rgba(180,175,230,0.4)';ctx.textAlign='center';
+ctx.fillText('RP\u00b3 = S\u00b3/\u2124\u2082 \u2014 Stereographic projection S\u00b3 \u2192 \u211d\u00b3 \u2192 screen',cx,H-14*(W/600));
+requestAnimationFrame(draw);}
+draw();
+})();
+
+// === VIS 3: DOUBLE ROTATION ===
+(function(){
+const{cv,ctx,W,H}=setupCanvas('c3');
+let mode='simple';const s1El=document.getElementById('s13'),s2El=document.getElementById('s23');
+document.getElementById('bS3').onclick=()=>{mode='simple';s1El.value=40;s2El.value=0;};
+document.getElementById('bD3').onclick=()=>{mode='double';s1El.value=40;s2El.value=30;};
+document.getElementById('bI3').onclick=()=>{mode='iso';s1El.value=40;s2El.value=40;};
+const purple='#AFA9EC',coral='#F0997B',teal='#5DCAA5';
+function rot4(p,pl,a){const c=Math.cos(a),s=Math.sin(a);let[x,y,z,w]=p;
+if(pl==='XY')return[x*c-y*s,x*s+y*c,z,w];if(pl==='ZW')return[x,y,z*c-w*s,z*s+w*c];return p;}
+const verts=[];for(let w=0;w<2;w++)for(let z=0;z<2;z++)for(let y=0;y<2;y++)for(let x=0;x<2;x++)verts.push([x*2-1,y*2-1,z*2-1,w*2-1]);
+const edges=[[0,1],[1,3],[3,2],[2,0],[4,5],[5,7],[7,6],[6,4],[0,4],[1,5],[2,6],[3,7],[8,9],[9,11],[11,10],[10,8],[12,13],[13,15],[15,14],[14,12],[8,12],[9,13],[10,14],[11,15],[0,8],[1,9],[2,10],[3,11],[4,12],[5,13],[6,14],[7,15]];
+let time=0;
+function proj4(p4,cx,cy,sc){const f=3/(3+p4[2]*0.5+p4[3]*0.3);return{x:cx+p4[0]*sc*f,y:cy+p4[1]*sc*f,d:f};}
+function drawScene(cx2,cy2,sc,a1,a2,lab,sub){
+const vs=verts.map(v=>{let p=rot4(v,'XY',a1);p=rot4(p,'ZW',a2);return p;});
+const ps=vs.map(v=>proj4(v,cx2,cy2,sc));
+for(const[i,j]of edges){const a=ps[i],b=ps[j];ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+ctx.strokeStyle=`rgba(180,175,230,${((a.d+b.d)/2*0.25).toFixed(2)})`;ctx.lineWidth=Math.max(0.5,(a.d+b.d)/2*1.2);ctx.stroke();}
+const c1=[];for(let i=0;i<=60;i++){const t=(i/60)*Math.PI*2;let p=[Math.cos(t)*1.2,Math.sin(t)*1.2,0,0];p=rot4(p,'XY',a1);p=rot4(p,'ZW',a2);c1.push(proj4(p,cx2,cy2,sc));}
+ctx.beginPath();c1.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));ctx.strokeStyle=purple;ctx.lineWidth=2.5;ctx.globalAlpha=0.8;ctx.stroke();ctx.globalAlpha=1;
+const c2=[];for(let i=0;i<=60;i++){const t=(i/60)*Math.PI*2;let p=[0,0,Math.cos(t)*1.2,Math.sin(t)*1.2];p=rot4(p,'XY',a1);p=rot4(p,'ZW',a2);c2.push(proj4(p,cx2,cy2,sc));}
+ctx.beginPath();c2.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));ctx.strokeStyle=coral;ctx.lineWidth=2.5;ctx.globalAlpha=0.8;ctx.stroke();ctx.globalAlpha=1;
+for(const p of ps){ctx.beginPath();ctx.arc(p.x,p.y,3*p.d,0,Math.PI*2);ctx.fillStyle=teal;ctx.globalAlpha=0.5+0.5*p.d;ctx.fill();ctx.globalAlpha=1;}
+const fs=Math.round(14*(W/800));ctx.font=`500 ${fs}px sans-serif`;ctx.fillStyle='rgba(200,195,240,0.6)';ctx.textAlign='center';ctx.fillText(lab,cx2,cy2+sc*1.55);
+ctx.font=`${Math.round(11*(W/800))}px sans-serif`;ctx.fillStyle='rgba(200,195,240,0.3)';ctx.fillText(sub,cx2,cy2+sc*1.55+fs*1.3);}
+function draw(){time+=0.012;const sp1=s1El.value/2000,sp2=s2El.value/2000;
+ctx.clearRect(0,0,W,H);ctx.fillStyle='#0e0e24';ctx.fillRect(0,0,W,H);
+const a1=time*(sp1>0?sp1:0.005),a2=time*sp2;const sc=Math.min(W,H)*0.14;
+drawScene(W*0.25,H*0.45,sc,a1,0,'XY plane','\u03B8\u2081 = '+Math.round(sp1*2000));
+drawScene(W*0.75,H*0.45,sc,0,a2,'ZW plane','\u03B8\u2082 = '+Math.round(sp2*2000));
+drawScene(W*0.5,H*0.45,sc*1.15,a1,a2,'Superposition',mode==='iso'?'isoclinic (\u03B8\u2081 = \u03B8\u2082)':mode==='double'?'double (\u03B8\u2081 \u2260 \u03B8\u2082)':'simple (\u03B8\u2082 = 0)');
+const fs3=Math.round(11*(W/800));ctx.font=`${fs3}px sans-serif`;ctx.textAlign='left';
+ctx.fillStyle=purple;ctx.fillRect(W*0.04,H*0.06,12,3);ctx.fillStyle='rgba(200,195,240,0.6)';ctx.fillText('XY rotation',W*0.04+18,H*0.06+4);
+ctx.fillStyle=coral;ctx.fillRect(W*0.04,H*0.06+fs3*1.8,12,3);ctx.fillStyle='rgba(200,195,240,0.6)';ctx.fillText('ZW rotation',W*0.04+18,H*0.06+fs3*1.8+4);
+requestAnimationFrame(draw);}
+draw();
+})();
+
+// === VIS 4: QGVP EXPANSION ===
+(function(){
+const{cv,ctx,W,H,cx,cy}=setupCanvas('c4');
+const st={drag:false,lx:0,ly:0,ax:0.3,ay:0,vx:0,vy:0};
+addDrag(cv,st);
+let playing=false,autoT=1,time=0,aXW=0,aZW=0;
+document.getElementById('play4').onclick=()=>{playing=!playing;document.getElementById('play4').textContent=playing?'Pause':'Play';};
+document.getElementById('reset4').onclick=()=>{autoT=1;document.getElementById('ep4').value=1;playing=false;document.getElementById('play4').textContent='Play';};
+const poleVecs=[[1,0,0,0],[0,1,0,0],[0,0,1,0],[0,0,0,1]];
+const poleCols=['#AFA9EC','#F0997B','#5DCAA5','#ED93B1'];const poleLab=['X','Y','Z','W'];
+function rot4(p,pl,a){const c=Math.cos(a),s=Math.sin(a);let[x,y,z,w]=p;
+if(pl==='XW')return[x*c-w*s,y,z,x*s+w*c];if(pl==='ZW')return[x,y,z*c-w*s,z*s+w*c];
+if(pl==='XY')return[x*c-y*s,x*s+y*c,z,w];if(pl==='YZ')return[x,y*c-z*s,y*s+z*c,w];return p;}
+function applyR(p){let q=rot4(p,'XW',aXW);q=rot4(q,'ZW',aZW);q=rot4(q,'XY',st.ax);q=rot4(q,'YZ',st.ay);return q;}
+function stereo(p4){const d=1-p4[3]+0.001;return[p4[0]/d,p4[1]/d,p4[2]/d];}
+function to2D(p3,R){const f=3.5/(3.5+p3[2]);return{x:cx+p3[0]*R*f,y:cy+p3[1]*R*f,z:p3[2],d:f};}
+const stars=[];for(let i=0;i<200;i++){const u=Math.random()*2-1,v=Math.random()*2-1,w2=Math.random()*2-1,w4=Math.random()*2-1;
+const l=Math.sqrt(u*u+v*v+w2*w2+w4*w4);stars.push({p:[u/l,v/l,w2/l,w4/l],sz:0.5+Math.random()*2,tw:Math.random()*6.28});}
+const hotC=[[255,220,180],[255,180,120],[220,130,80],[180,90,60],[140,70,120],[100,60,160],[70,55,140]];
+function getH(t){const idx=t*(hotC.length-1);const i=Math.floor(idx),f=idx-i;const a=hotC[Math.min(i,hotC.length-1)],b=hotC[Math.min(i+1,hotC.length-1)];
+return`rgb(${Math.round(a[0]+(b[0]-a[0])*f)},${Math.round(a[1]+(b[1]-a[1])*f)},${Math.round(a[2]+(b[2]-a[2])*f)})`;}
+function draw(){
+time+=0.012;if(playing){autoT=Math.min(1000,autoT+0.5);document.getElementById('ep4').value=Math.round(autoT);}else autoT=parseFloat(document.getElementById('ep4').value);
+const tN=autoT/1000;const a=0.04+tN*0.96;const R=Math.min(W,H)*0.38*a;const heat=Math.min(1,(1-a)*1.5);
+document.getElementById('epV4').textContent=tN.toFixed(2);
+if(!st.drag){aXW+=0.005;aZW+=0.003;st.ax+=st.vx*0.006;st.ay+=st.vy*0.006;st.vx*=0.97;st.vy*=0.97;}
+ctx.clearRect(0,0,W,H);ctx.fillStyle='#0e0e24';ctx.fillRect(0,0,W,H);
+ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle=getH(heat);ctx.globalAlpha=0.06+0.2*(1-a);ctx.fill();ctx.globalAlpha=1;
+ctx.strokeStyle='rgba(160,150,230,0.3)';ctx.lineWidth=1.5;ctx.stroke();
+for(const s of stars){const rp=applyR(s.p);const p3=stereo(rp);if(Math.sqrt(p3[0]**2+p3[1]**2+p3[2]**2)>3)continue;
+const sc=to2D(p3,R);const tw=0.5+0.5*Math.sin(time*2+s.tw);
+ctx.beginPath();ctx.arc(sc.x,sc.y,s.sz*sc.d*(W/700),0,Math.PI*2);
+ctx.fillStyle=`rgba(220,225,255,${(tw*0.5*sc.d*(0.2+0.8*a)).toFixed(2)})`;ctx.fill();}
+if(document.getElementById('poles4').checked){for(let i=0;i<4;i++){
+const rp=applyR(poleVecs[i]);const p3=stereo(rp);if(Math.sqrt(p3[0]**2+p3[1]**2+p3[2]**2)>4)continue;
+const sc=to2D(p3,R);const sz=Math.max(4,8*sc.d)*(W/700);
+ctx.beginPath();ctx.arc(sc.x,sc.y,sz,0,Math.PI*2);ctx.fillStyle=poleCols[i];ctx.globalAlpha=0.3+0.5*sc.d;ctx.fill();ctx.globalAlpha=1;
+ctx.strokeStyle=poleCols[i];ctx.lineWidth=1.5;ctx.stroke();
+const fs=Math.round(11*(W/700));ctx.font=`500 ${fs}px sans-serif`;ctx.fillStyle=poleCols[i];ctx.globalAlpha=0.5+0.5*sc.d;ctx.textAlign='center';ctx.fillText(poleLab[i],sc.x,sc.y-sz-4);ctx.globalAlpha=1;}}
+const scl=W/700;const fs=Math.round(11*scl);ctx.font=`${fs}px sans-serif`;ctx.textAlign='left';ctx.fillStyle='rgba(200,195,240,0.5)';
+const ix=W*0.04,iy=H*0.04,lh=fs*1.5;
+ctx.fillText('R = '+(15*a).toFixed(1)+' AU',ix,iy+lh);
+ctx.fillText('\u03C1 = '+((2.3e17/a**3)/1e17).toFixed(1)+' \u00D7 10\u00B9\u2077 kg/m\u00B3',ix,iy+lh*2);
+ctx.fillText('\u03B1 = '+(a<0.15?'~0.05 (max)':a<0.5?(0.05*a/0.5).toFixed(3):'0.005'),ix,iy+lh*3);
+ctx.fillText('v_time/c = '+Math.round(Math.sqrt(Math.max(0.005,a))*100)+'%',ix,iy+lh*4);
+if(a<0.15){ctx.fillStyle='rgba(255,200,150,0.5)';ctx.font=`500 ${Math.round(13*scl)}px sans-serif`;ctx.textAlign='center';
+ctx.fillText('QGVP',cx,cy);ctx.font=`${Math.round(10*scl)}px sans-serif`;
+ctx.fillText('Quark-Gluon-Vacuum Plasma',cx,cy+14*scl);ctx.fillText('Kriger Limit: \u03B1 \u2192 0 above nuclear density',cx,cy+26*scl);}
+ctx.fillStyle='rgba(180,175,230,0.35)';ctx.font=`${Math.round(11*scl)}px sans-serif`;ctx.textAlign='center';
+ctx.fillText('RP\u00b3 = S\u00b3/\u2124\u2082 \u2014 4 poles, 6 rotation planes, 2 independent',cx,H-20*scl);
+requestAnimationFrame(draw);}
+draw();
+})();
+</script>
+</body>
+</html>
